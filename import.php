@@ -4,7 +4,7 @@ $db = ConnectPDO('ill');
 
 $table = "archive";
 $handle = @fopen("ill.import", "r");
-//$handle = @fopen("4228", "r");
+
 if ($handle) {
     while (($buffer = fgets($handle, 4096)) !== false) {
         ParseAndSubmit($buffer, $db, $table);
@@ -66,7 +66,6 @@ function ParseAndSubmit($line, $db, $table) {
 
     $request_date = date("Y-m-d H:i:s", strtotime($request_date));
 
-    //    print_r($fields);
     $submit_fields = $tokens = $values = array();
     foreach ($fields as $field) { 
         $v = $$field;
@@ -83,10 +82,10 @@ function ParseAndSubmit($line, $db, $table) {
     }
     try {
         $query = 'INSERT INTO '.$table.'('. join($submit_fields,',') .') VALUES('. join($tokens, ', ') .')';
-        //    print $query;
+
         $stmt = $db->prepare($query);
         $stmt->execute($values);
-        //    print "<table>$rows</table>";
+
     }
     catch (PDOException $e) {
         print "<p>ERROR: $e->getMessage()</p>";
