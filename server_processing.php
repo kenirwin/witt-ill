@@ -53,7 +53,7 @@ include ('datatables-connect.php');
  * server-side, there is no need to edit below this line.
  */
 
-require( '/docs/lib/include/jquery/DataTablesSrc-1.10.15/examples/server_side/scripts/ssp.class.php' );
+require( 'ssp.class.php' );
 
 echo json_encode(
 	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )

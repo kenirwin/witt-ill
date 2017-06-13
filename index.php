@@ -25,7 +25,7 @@ body { font-family: Arial, Helvetica, sans-serif }
     $(document).ready(function() {
         $('#requests').DataTable( {
                 "ajax": {
-                    "url": 'json-ill.php',
+                    "url": 'server_processing.php',
                      "data": function (d) {
                          d.sPrinted = '<?= $data; ?>';
                      }
