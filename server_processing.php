@@ -29,6 +29,7 @@ $primaryKey = 'id';
 // parameter represents the DataTables column identifier. In this case simple
 // indexes
 
+$printed = $_REQUEST['sPrinted'];
 
 $columns = array(
 	array( 'db' => 'id', 'dt' => 0 ),
@@ -56,7 +57,7 @@ include ('datatables-connect.php');
 require( 'ssp.class.php' );
 
 echo json_encode(
-	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
+	SSP::complex( $_GET, $sql_details, $table, $primaryKey, $columns, null, "printed = $printed" )
 );
 
 
