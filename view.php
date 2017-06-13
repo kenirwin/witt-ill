@@ -23,7 +23,6 @@ foreach ($data as $k=>$v) {
     $data[$k] = urldecode($v);
 }
 
-//print_r($data);
 extract($data);
 
 
